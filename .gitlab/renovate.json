@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "semanticCommits": "enabled",
+  "extends": ["config:base", "group:allNonMajor", ":semanticCommitType(build)"],
+  "branchPrefix": "chore/",
+  "branchNameStrict": true,
+  "packageRules": [
+    {
+      "commitMessageTopic": "Node.js",
+      "matchPackageNames": ["node"],
+      "groupName": "Node.js"
+    }
+  ],
+  "reviewers": ["tristan.chaumont"]
+}

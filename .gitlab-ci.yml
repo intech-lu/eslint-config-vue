@@ -1,0 +1,38 @@
+image: node:16-alpine
+
+cache:
+  key: "$CI_PIPELINE_IID"
+  paths:
+    - node_modules/
+
+stages:
+  - install
+  - publish
+
+install:
+  stage: install
+  script:
+    - npm --userconfig=$NPMRC ci
+  tags:
+    - cluster
+    - kubernetes
+
+publish-snapshot:
+  stage: publish
+  only:
+    - develop
+  script:
+    - npm --userconfig=$NPMRC --registry=$NPM_REGISTRY_SNAPSHOTS publish
+  tags:
+    - cluster
+    - kubernetes
+
+publish-release:
+  stage: publish
+  only:
+    - tags
+  script:
+    - npm --userconfig=$NPMRC --registry=$NPM_REGISTRY_RELEASES publish
+  tags:
+    - cluster
+    - kubernetes
