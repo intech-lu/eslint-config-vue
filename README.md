@@ -40,7 +40,7 @@ Create a `.vscode/settings.json` file with the following configuration at the ro
 Go to the folder of your project and execute the following command:
 
 ```bash
-npm install -D eslint @intech.lu/eslint-vue
+npm install -D eslint '@intech.lu/eslint-vue'
 ```
 
 Note: *You'll have to install ESLint at least version 9 as it includes breaking changes and reworks the way ESLint is executed.*

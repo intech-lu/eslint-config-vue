@@ -12,6 +12,9 @@
     "vue"
   ],
   "author": "InTech S.A. <equipe.titane@intech.lu> (https://www.intech.lu)",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "contributors": [
     {
       "name": "Tristan Chaumont",
@@ -42,13 +45,13 @@
   "main": "eslint.config.mjs",
   "dependencies": {
     "@vue/eslint-config-prettier": "^10.2.0",
-    "eslint-config-intechlux": "^2.7.1",
-    "eslint-plugin-vue": "^10.4.0",
-    "typescript-eslint": "^8.44.0",
+    "@intech.lu/eslint-config": "1.0.1",
+    "eslint-plugin-vue": "^10.5.0",
+    "typescript-eslint": "^8.46.0",
     "vue-eslint-parser": "^10.2.0"
   },
   "peerDependencies": {
-    "eslint": "^9.24.0"
+    "eslint": "^9.37.0"
   },
   "engines": {
     "node": ">=18.18.0"
