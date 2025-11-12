@@ -16,7 +16,13 @@ stages:
 check-package-log:
   stage: install
   script:
-    - ! grep intech.dev package-lock.json
+    - |
+      if grep -q 'intech.dev' package-lock.json; then
+        echo "❌ Error : occurence of 'intech.dev' founded in package-lock.json";
+        exit 1;
+      else
+        echo "✅ OK : no occurence of 'intech.dev' founded";
+      fi
   rules:
     - if: $CI_COMMIT_BRANCH =~ /^release/
 
