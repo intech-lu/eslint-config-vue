@@ -8,12 +8,29 @@ cache:
   paths:
     - node_modules/
 
+workflow: 
+  rules:
+    - if: $CI_COMMIT_BRANCH =~ /^release/
+      variables:
+        PUBLISH_RELEASE: false
+        PUBLISH_SNAPSHOT: true
+    - if: $CI_COMMIT_TAG
+      variables:
+        PUBLISH_RELEASE: true
+        PUBLISH_SNAPSHOT: false
+
 stages:
   - install
   - release
   - publish
 
-check-package-log:
+include:
+  - component: $CI_SERVER_FQDN/intech/infrastructure/common-ci/npm-install@2.4.0
+    inputs:
+      node-version: "22"
+  - component: $CI_SERVER_FQDN/intech/infrastructure/common-ci/publish-release-or-snapshot@2.4.0 
+
+check-package-lock:
   stage: install
   script:
     - |
@@ -25,25 +42,3 @@ check-package-log:
       fi
   rules:
     - if: $CI_COMMIT_BRANCH =~ /^release/
-
-install:
-  stage: install
-  script:
-    - npm --userconfig=$NPMRC ci
-  tags:
-    - cluster
-publish-snapshot:
-  stage: publish
-  only:
-    - develop
-  script:
-    - npm --userconfig=$NPMRC --registry=$NPM_REGISTRY_SNAPSHOTS publish
-
-publish-release:
-  stage: publish
-  only:
-    - tags
-  script:
-    - npm --userconfig=$NPMRC --registry=$NPM_REGISTRY_RELEASES publish
-  tags:
-    - cluster
