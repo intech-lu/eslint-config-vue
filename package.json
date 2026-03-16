@@ -1,6 +1,6 @@
 {
   "name": "@intech.lu/eslint-config-vue",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "ESLint rules for InTech Vue projects",
   "keywords": [
     "style guide",
@@ -45,13 +45,13 @@
   "main": "eslint.config.mjs",
   "dependencies": {
     "@vue/eslint-config-prettier": "^10.2.0",
-    "@intech.lu/eslint-config": "1.1.1",
-    "eslint-plugin-vue": "^10.6.2",
-    "typescript-eslint": "^8.50.0",
-    "vue-eslint-parser": "^10.2.0"
+    "@intech.lu/eslint-config": "2.0.0",
+    "eslint-plugin-vue": "^10.8.0",
+    "typescript-eslint": "^8.57.0",
+    "vue-eslint-parser": "^10.4.0"
   },
   "peerDependencies": {
-    "eslint": "^9.39.2"
+    "eslint": "^10.0.1"
   },
   "engines": {
     "node": ">=24.12.0"
