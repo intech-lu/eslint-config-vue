@@ -25,10 +25,10 @@ stages:
   - publish
 
 include:
-  - component: $CI_SERVER_FQDN/intech/infrastructure/common-ci/npm-install@2.4.0
+  - component: $CI_SERVER_FQDN/intech/infrastructure/common-ci/npm-install@2.4.3
     inputs:
       node-version: "22"
-  - component: $CI_SERVER_FQDN/intech/infrastructure/common-ci/publish-release-or-snapshot@2.4.0 
+  - component: $CI_SERVER_FQDN/intech/infrastructure/common-ci/publish-release-or-snapshot@2.4.3
 
 check-package-lock:
   stage: install
