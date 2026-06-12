@@ -16,6 +16,10 @@ export default defineConfig(
       parserOptions: {
         parser: tseslint.parser,
       }
+    },
+    rules: {
+      // Enforce order of Vue components blocks
+      "vue/block-order": ["error", { "order": [ "script", "template", "style" ]}]
     }
   }
 );
