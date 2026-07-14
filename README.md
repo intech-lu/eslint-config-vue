@@ -17,21 +17,37 @@ Add the InTech ESLint Rules on your existing project.
 
 ### 📋 Requirements
 
-- NPM version >= 9
-- Node.js version >= `v18.18.0`
+- Node.js version >= `v24.18.0`
 
 ### 1️⃣ Step 1: install the ESLint extension for VSCode
 
 - <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>
 
-Create a `.vscode/settings.json` file with the following configuration at the root of your project:
+Create a `.vscode/settings.json` file with the following configuration at the root of your project to enable auto-fixing of ESLint issues on save:
 
 ```json
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": ["javascript", "typescript", "html"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html"
+  ]
+}
+```
+
+Create a `.vscode/extensions.json` file with the following configuration at the root of your project to recommend the ESLint extension to your team members:
+
+```json
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint"
+  ]
 }
 ```
 
@@ -40,34 +56,35 @@ Create a `.vscode/settings.json` file with the following configuration at the ro
 Go to the folder of your project and execute the following command:
 
 ```bash
-npm install -D eslint '@intech.lu/eslint-vue'
+npm install -D eslint '@intech.lu/eslint-config-vue'@latest
 ```
-
-Note: *You'll have to install ESLint at least version 9 as it includes breaking changes and reworks the way ESLint is executed.*
 
 ### 3️⃣ Step 3: create the ESLint configuration
 
 At the root of your project, create an `eslint.config.mjs` file with the following content:
 
-```js
+```ts
 import eslintConfig from '@intech.lu/eslint-config-vue';
+import { defineConfig } from 'eslint/config';
 
-export default [ 
+export default defineConfig(
   ...eslintConfig,
-];
+);
 ```
 
 If you need to override the InTech rules for some reason, simply do it by adding rules in your `eslint.config.mjs`, it will override the InTech related ones:
 
-```js
+```ts
 import eslintConfig from '@intech.lu/eslint-config-vue';
 
-export default [ 
+export default defineConfig(
   ...eslintConfig,
   {
-    rules: {}
+    rules: {
+      'no-console': 'error',
+    },
   },
-];
+);
 ```
 
 ⚠️ *NB: You should always override InTech rules after destructuring `eslintConfig`, otherwise `eslintConfig` will take precedence and override the rules you've just added.*
