@@ -84,6 +84,16 @@ export default defineConfigWithVueTs(
       // Require typed payload validation for every emitted event.
       'vue/require-emit-validator': 'error',
 
+      // Allow labels to associate controls through either nesting or an explicit for/id link.
+      "vuejs-accessibility/label-has-for": [
+        "error",
+        {
+          "required": {
+            "some": ["nesting", "id"]
+          },
+        }
+      ],
+
       // Keep TypeScript definitions aligned with the shared InTech configuration.
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 
