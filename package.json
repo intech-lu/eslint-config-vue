@@ -1,6 +1,6 @@
 {
   "name": "@intech.lu/eslint-config-vue",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "ESLint rules for InTech Vue projects",
   "keywords": [
     "style guide",
