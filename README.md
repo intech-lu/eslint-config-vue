@@ -1,6 +1,6 @@
 # InTech Vue ESLint Rules
 
-Welcome to the "InTech Vue ESLint Rules" repository, a centralized solution for managing and applying consistent code quality standards accross all projects at InTech. This repository hosts a custom ESLint configuration designed to enforce a unified coding style and coding best practices helping to ensure maintainability and reducing code quality discrepancies in collaborative projects.
+Welcome to the "InTech Vue ESLint Rules" repository, a centralized solution for managing and applying consistent code quality standards across all projects at InTech. This repository hosts a custom ESLint configuration designed to enforce a unified coding style and coding best practices helping to ensure maintainability and reducing code quality discrepancies in collaborative projects.
 
 ## 🗂️ Table of Contents
 
